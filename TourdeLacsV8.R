@@ -2854,7 +2854,7 @@ Kutser.nrmse.c.size<-
 
 
 
-################# Plot 4 CDOM algorithms together ####
+######### Plot 4 CDOM algorithms together ####
 cdomAlgs<-arrangeGrob(Brezonik.cdom.nrmse.s.size,Brezonik.cdom.nrmse.c.size,
                       Griffin.nrmse.s.size,Griffin.nrmse.c.size,Olmanson.nrmse.s.size,
                       Olmanson.nrmse.c.size,Kutser.nrmse.s.size,Kutser.nrmse.c.size,ncol=2,nrow=4)
@@ -2864,7 +2864,7 @@ ggsave("cdomAlgs.png",cdomAlgs,width=20,height=20,dpi=200)
 
 
 
-################# Histograms of limno variables ######
+######### Histograms of limno variables ######
 (max(limno_avg$Chl,na.rm=TRUE) - min(limno_avg$Chl,na.rm=TRUE))/sqrt(15) # binwidths
 (max(limno_avg$Color_440_nm,na.rm=TRUE) - min(limno_avg$Color_440_nm,na.rm=TRUE))/sqrt(15) # binwidths
 (max(limno_avg$Color_320_nm,na.rm=TRUE) - min(limno_avg$Color_320_nm,na.rm=TRUE))/sqrt(15) # binwidths
