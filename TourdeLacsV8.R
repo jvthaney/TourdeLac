@@ -85,60 +85,60 @@ buff510<-data.frame(append(buff510,c(BufferSize=510),after=1))
 
 
 # Remove Lakes from buffer sizes that touch land
-b3<-subset(buff3,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-             ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-             ?..Lake=="Long ?..Lake"|?..Lake=="Crescent"|?..Lake=="Sunapee")
+b3<-subset(buff3,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+             ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+             ï..Lake=="Long ï..Lake"|ï..Lake=="Crescent"|ï..Lake=="Sunapee")
 
-b30<-subset(buff30,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-              ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-              ?..Lake=="Long ?..Lake"|?..Lake=="Crescent"|?..Lake=="Sunapee")
+b30<-subset(buff30,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+              ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+              ï..Lake=="Long ï..Lake"|ï..Lake=="Crescent"|ï..Lake=="Sunapee")
 
-b60<-subset(buff60,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-              ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-              ?..Lake=="Long ?..Lake"|?..Lake=="Crescent"|?..Lake=="Sunapee")
+b60<-subset(buff60,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+              ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+              ï..Lake=="Long ï..Lake"|ï..Lake=="Crescent"|ï..Lake=="Sunapee")
 
-b90<-subset(buff90,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-              ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-              ?..Lake=="Long ?..Lake"|?..Lake=="Crescent"|?..Lake=="Sunapee")
+b90<-subset(buff90,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+              ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+              ï..Lake=="Long ï..Lake"|ï..Lake=="Crescent"|ï..Lake=="Sunapee")
 
-b120<-subset(buff120,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-               ?..Lake=="Long ?..Lake"|?..Lake=="Crescent"|?..Lake=="Sunapee")
+b120<-subset(buff120,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+               ï..Lake=="Long ï..Lake"|ï..Lake=="Crescent"|ï..Lake=="Sunapee")
 
-b150<-subset(buff150,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-               ?..Lake=="Long ?..Lake"|?..Lake=="Sunapee")
+b150<-subset(buff150,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+               ï..Lake=="Long ï..Lake"|ï..Lake=="Sunapee")
 
-b180<-subset(buff180,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|
-               ?..Lake=="Long ?..Lake"|?..Lake=="Sunapee")
+b180<-subset(buff180,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|
+               ï..Lake=="Long ï..Lake"|ï..Lake=="Sunapee")
 
-b210<-subset(buff210,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|?..Lake=="Sunapee")
+b210<-subset(buff210,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|ï..Lake=="Sunapee")
 
-b240<-subset(buff240,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|?..Lake=="Sunapee")
+b240<-subset(buff240,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|ï..Lake=="Sunapee")
 
-b270<-subset(buff270,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Goose"|?..Lake=="Long Pond"|?..Lake=="Sunapee")
+b270<-subset(buff270,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Goose"|ï..Lake=="Long Pond"|ï..Lake=="Sunapee")
 
-b300<-subset(buff300,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sabattus"|
-               ?..Lake=="Panther"|?..Lake=="Fairlee"|?..Lake=="Androscoggin"|?..Lake=="Thomas"|?..Lake=="Sunapee")
+b300<-subset(buff300,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sabattus"|
+               ï..Lake=="Panther"|ï..Lake=="Fairlee"|ï..Lake=="Androscoggin"|ï..Lake=="Thomas"|ï..Lake=="Sunapee")
 
-b330<-subset(buff330,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|
-               ?..Lake=="Sabattus"|?..Lake=="Sunapee")
+b330<-subset(buff330,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|
+               ï..Lake=="Sabattus"|ï..Lake=="Sunapee")
 
-b360<-subset(buff360,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sunapee")
+b360<-subset(buff360,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sunapee")
 
-b390<-subset(buff390,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sebago"|?..Lake=="Sunapee")
+b390<-subset(buff390,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sebago"|ï..Lake=="Sunapee")
 
-b420<-subset(buff420,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Auburn"|?..Lake=="Sunapee")
+b420<-subset(buff420,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Auburn"|ï..Lake=="Sunapee")
 
-b450<-subset(buff450,?..Lake=="Morey"|?..Lake=="Mascoma"|?..Lake=="Messalonskee"|?..Lake=="Sunapee")
+b450<-subset(buff450,ï..Lake=="Morey"|ï..Lake=="Mascoma"|ï..Lake=="Messalonskee"|ï..Lake=="Sunapee")
 
-b480<-subset(buff480,?..Lake=="Morey"|?..Lake=="Sunapee")
+b480<-subset(buff480,ï..Lake=="Morey"|ï..Lake=="Sunapee")
 
-b510<-subset(buff510,?..Lake=="Sunapee")
+b510<-subset(buff510,ï..Lake=="Sunapee")
 
 # Merge buffer subsets into one dataset
 buffers<-rbind(b3,b30,b60,b90,b120,b150,b180,b210,b240,b270,b300,b330,b360,b390,b420,b450,b480,b510)
