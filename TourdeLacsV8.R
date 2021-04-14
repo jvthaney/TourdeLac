@@ -42,9 +42,7 @@ tol18rainbow=c("#771155", "#AA4488", "#CC99BB", "#114477", "#4477AA", "#77AADD",
 tol21rainbow= c("#771155", "#AA4488", "#CC99BB", "#114477", "#4477AA", "#77AADD", "#117777", "#44AAAA", "#77CCCC", "#117744", "#44AA77", "#88CCAA", "#777711", "#AAAA44", "#DDDD77", "#774411", "#AA7744", "#DDAA77", "#771122", "#AA4455", "#DD7788")
 
 
-################################################################################
-########## Read data for Multibuffer Analysis - sample point ###################
-###############################################################################
+### Read SAMPLE POINT data for Multibuffer Analysis ###################
 # Read GEE output files (5 day window, buoy location on Lake Sunapee)
 buff3<-read.csv("3m_5day_buoy.csv",header=TRUE)
 buff3<-data.frame(append(buff3,c(BufferSize=3),after=1))
@@ -142,7 +140,7 @@ b510<-subset(buff510,ï..Lake=="Sunapee")
 
 # Merge buffer subsets into one dataset
 buffers<-rbind(b3,b30,b60,b90,b120,b150,b180,b210,b240,b270,b300,b330,b360,b390,b420,b450,b480,b510)
-buffers<-rename(buffers,Lake = ?..Lake)
+buffers<-rename(buffers,Lake = ï..Lake)
 buffers$time_zone<-"EDT"
 buffers$state<-""
 
@@ -203,7 +201,7 @@ write.table(buffersW,"buffersW.csv",sep=" ,",col.names = NA)
 # Check Sunapee
 #Sunapee<-filter(buffersW,Lake=="Sunapee")
 
-###### Add column for day difference #####
+############### Add column for day difference #####
 library(lubridate)
 buffersW$acq.date.string<-substr(buffersW$imgname,start=18,stop=26)
 buffersW$acq.date.string
@@ -215,7 +213,7 @@ buffersW$DayDiff<-as_date(buffersW$sample.date,format="%Y-%m-%d")-as_date(buffer
 buffersW$DayDiff<-as.numeric(abs(buffersW$DayDiff))
 
 
-###### Summary table to check stuff ######
+############### Summary table to check stuff ######
 toursummary_s<-buffersW%>%group_by(Lake,BufferSize,acq.date)%>%
   summarise(satellite = Landsat,
             pixcount = (blue_count),
@@ -236,9 +234,7 @@ write.table(toursummary_s,"toursummary_s.csv",sep=" ,",col.names=NA)
 buffersW<-buffersW%>%filter(!is.na(swir1_median))
 
 ##
-################################################################################
-########## Reshape data for Multibuffer Analysis - sample point WITH polygons ##
-################################################################################
+### RESHAPE sample pt WITH polygons ######
 ## Reshape data
 buffersW<-as.data.table(buffersW)
 tdl1sw<-
@@ -307,7 +303,7 @@ tdlsw$BufferSize <- factor(tdlsw$BufferSize, levels=c("3","30","60","90","120","
 
 
 
-#### Plot Summary Stats (sample point) ####
+############### Plot Summary Stats (sample point) ####
 # Std
 StdSW<-
   ggplot(tdlsw,aes(BufferSize,std,color=Band.std,shape=Landsat))+theme_classic()+
@@ -378,9 +374,7 @@ ggsave("BuffFigs_5dCW.png",BuffFigs_5dSW,height=15,width=20,dpi=100)
 
 
 
-################################################################################
-########## Read data for Multibuffer Analysis - center point ###################
-###############################################################################
+### Read CENTER POINT data for Multibuffer Analysis ###################
 # Read GEE output files (5 day window only)
 buff3c<-read.csv("3m_5day_clag.csv",header=TRUE)
 buff3c<-data.frame(append(buff3c,c(BufferSize=3),after=1))
@@ -595,7 +589,7 @@ sum(is.na(buffersCW$swir2_median)) # 177 - more missing values for swir2
 #write.table(buffersC,"buffersC.csv",sep=" ,",col.names = NA)
 #write.table(buffersCW,"buffersCW.csv",sep=" ,",col.names = NA)
 
-###### Add column for day difference #####
+############### Add column for day difference #####
 library(lubridate)
 buffersCW$acq.date.string<-substr(buffersCW$imgname,start=18,stop=26)
 buffersCW$acq.date.string
@@ -606,7 +600,7 @@ buffersCW$sample.date<-as_date(buffersCW$sample.date)
 buffersCW$DayDiff<-as_date(buffersCW$sample.date,format="%Y-%m-%d")-as_date(buffersCW$acq.date,format="%Y-%m-%d")
 buffersCW$DayDiff<-as.numeric(abs(buffersCW$DayDiff))
 
-###### Summary table to check stuff ######
+############### Summary table to check stuff ######
 toursummary_c<-buffersCW%>%group_by(Lake,BufferSize,acq.date)%>%
   summarise(satellite = Landsat,
             pixcount = (blue_count),
@@ -626,9 +620,7 @@ write.table(toursummary_c,"toursummary_c.csv",sep=" ,",col.names=NA)
 ## Remove na rows
 buffersCW<-buffersCW%>%filter(!is.na(swir1_median))
 
-################################################################################
-########## Reshape data for Multibuffer Analysis - center point WITH polygons ##
-###############################################################################
+### RESHAPE center point WITH polygons ######
 ## Reshape data
 buffersCW<-data.table(buffersCW)
 tdl1cw<-
@@ -696,7 +688,7 @@ tdlcw$BufferSize <- factor(tdlcw$BufferSize, levels=c("3","30","60","90","120","
                                                       "330","360","390","420","450","480","510","540","570","600","630",
                                                       "660","690","720","750","780","810","840","870","900","930","960",
                                                       "990","1020","1050","1080","Whole"))
-#### Plot Summary Stats (center of lake) ####
+############### Plot Summary Stats (center of lake) ####
 # Std
 StdCW<-
   ggplot(tdlcw,aes(BufferSize,std,color=Band.std,shape=Landsat))+theme_classic()+
@@ -765,9 +757,7 @@ BuffFigs_5dCW <- arrangeGrob(BuffCountCW,StdCW,BuffMeanCW,BuffMedianCW,nrow=2, n
 ggsave("BuffFigs_5dCW.png",BuffFigs_5dCW,height=15,width=20,dpi=100)
 
 
-################################################################################
-########### Make Subsets based on lake size - only All & Large #################
-################################################################################
+### Make Subsets based on lake size - ALL LAKES VS. LARGE LAKES #################
 ####### Sample point
 ## Subset to buffer sizes that work for all 15 lakes (up to 60 m buffer)
 small.s<-filter(tdlsw,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="Whole")
@@ -801,7 +791,7 @@ large.c<-filter(large.c1,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|Buffe
 large.c$BufferSize<-factor(large.c$BufferSize)
 
 
-#### Plot for sample point ########
+############### Plot for sample point ########
 ###################### All 15 lakes (up to 60 m)
 ## Plot std
 stdS.sm<-
@@ -1013,7 +1003,7 @@ ggsave("medianS.lg.png",medianS.lg,height=6,width=12,dpi=100)
 Allstats.S.lg<-arrangeGrob(countS.lg,stdS.lg,meanS.lg,medianS.lg,nrow=2,ncol=2)
 ggsave("Allstats.S.lg.png",Allstats.S.lg,height=10,width=17,dpi=100)
 
-#### Plot for center of lake ########
+############### Plot for center of lake ########
 ###################### All 15 lakes
 ## Plot std
 stdC.sm<-
@@ -1228,9 +1218,7 @@ ggsave("Allstats.c.lg.png",Allstats.c.lg,height=10,width=17,dpi=100)
 
 
 
-########################################################################
-####### Remake lake subsets to use w/ chl, secchi, & other algorithms ##
-########################################################################
+### Remake lake subsets to use w/ chl, secchi, & other algorithms ######
 ####### Sample point
 ## Subset to buffer sizes that work for all 15 lakes (up to 120 m buffer)
 small.s<-filter(buffersW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|
@@ -1311,7 +1299,7 @@ llarge.c<-merge(limno_avg,llarge.c1,by.x=c("Lake"),by.y=c("Lake"),na.rm=TRUE,all
 ### Write table to R folder
 #write.table(tdl2,"tdl2.csv")
 
-####### CHLOROPHYLL ALGORITHMS ################
+### CHLOROPHYLL ALGORITHMS BELOW: ################
 ################# Giardino et al. (2001) #####
 # Lake Iseo, Italy
 # ChlA = 11.18*B1 -8.96*B2 - 3.28 mg/m^3, Landsat 5
@@ -2172,7 +2160,7 @@ ggsave("chlAlgs.jpeg",chlAlgs,width=25,height=20)
 ggsave("chlAlgs.png",chlAlgs,width=25,height=20,dpi=200)
 
 
-####### CDOM ALGORITHMS ################
+####### CDOM ALGORITHMS BELOW: ################
 ################# Brezonik et al. (2005) ##############
 # ln(a440nm) = B2+(B1/B4)
 # 13 lakes in east-central Minnesota
@@ -2690,6 +2678,8 @@ Olmanson.nrmse.c.size<-
 
 
 
+#### Create nrmse table #####
+mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_440_nm",".fitted")
 ################# Kutser et al. (2012) ##############
 # a320nm = B2/B3
 # Two sites, one central one southern Sweden
@@ -2805,8 +2795,6 @@ reg.large.c<-
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
 
-#### Create nrmse table #####
-mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_440_nm",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
   merge(.,nrmse.small.c,by=mergeCols,all=TRUE)%>%
@@ -2898,7 +2886,7 @@ CDOM320_histo<-
 
 
 
-###### Plot differences btw Center & Sample points - no subsets ####
+### Plot differences btw Center & Sample points - no subsets ####
 # Change column names in center of lake data table to make them distinctive for the join
 buffersCW<-
   buffersCW %>% 
@@ -3160,7 +3148,7 @@ stds<-
 diffs<-arrangeGrob(means,medians,stds,ncol=1,nrow=3)
 ggsave("diffs.png",diffs,width=15,height=18,dpi=200)
 
-###### Plot differences with All 15 lake subset #####
+### Plot differences with All 15 lake subset #####
 # Change column names in center of lake data table to make them distinctive for the join
 small.c<-
   small.c %>% 
@@ -3288,7 +3276,7 @@ stds<-
 diffs.small<-arrangeGrob(means,medians,stds,ncol=1,nrow=3)
 ggsave("diffs.small.png",diffs.small,width=10,height=18,dpi=200)
 
-###### Plot differences with Large lake subset #####
+### Plot differences with Large lake subset #####
 # Change column names in center of lake data table to make them distinctive for the join
 large.c<-
   large.c %>% 
@@ -3413,10 +3401,10 @@ stds<-
 diffs.large<-arrangeGrob(means,medians,stds,ncol=1,nrow=3)
 ggsave("diffs.large.png",diffs.large,width=10,height=18,dpi=200)
 
-####### PLOT ALL LAKE AND LARGE LAKE SETS TOGETHER ############
+######### PLOT ALL LAKE AND LARGE LAKE SETS TOGETHER ############
 differences<-arrangeGrob(diffs.small,diffs.large,ncol=2,nrow=1)
 ggsave("differences.png",differences,width=20,height=15,dpi=200)
-##### Plot differences with All lake subset (lake=color,shape=band) #######
+### Plot differences with All lake subset (lake=color,shape=band) #######
 # Change column names in center of lake data table to make them distinctive for the join
 
 ## Merge the new data tables
@@ -3547,8 +3535,8 @@ means.legend<-
 ggsave("means.legend.png",means.legend,width=10,height=10,dpi=200)
 
 
-##### Plot differences with Large lake subset (lake=color,shape=band) #####
-# Change column names in center of lake data table to make them distinctive for the join
+### Plot differences with Large lake lsubset (lake=color,shape=band) #####
+# Change column names in center of lake ldata table to make them distinctive for the join
 ## Merge the new data tables
 mergeCols3<-c("BufferSize","Lake")
 newtable<-full_join(large.s,large.c,by=mergeCols3)
@@ -3672,13 +3660,11 @@ diffs.large2<-arrangeGrob(means2,medians2,stds2,ncol=1,nrow=3)
 ggsave("diffs.large2.png",diffs.large2,width=10,height=18,dpi=200)
 
 
-##### PLOT ALL LAKE AND LARGE LAKE SETS TOGETHER (lake=color,shape=band) #####
+######### PLOT ALL LAKE AND LARGE LAKE SETS TOGETHER (lake=color,shape=band) #####
 differences2<-arrangeGrob(diffs.small2,diffs.large2,ncol=2,nrow=1)
 ggsave("differences2.png",differences2,width=20,height=15,dpi=200)
 
-####################################################################################
-############# Plot Multibuffer summary stats - center point - WITH whole lake ######
-####################################################################################
+### Plot Multibuffer summary stats - CENTER PT - w/ whole lake ######
 ## Reshape data
 tdl1cw<-
   melt(buffersCW,id.variables=c("blue_count","green_count","red_count","swir1_count","swir2_count","nir_count",
@@ -4027,7 +4013,7 @@ ggsave("bands.meanCW.png",bands.meanCW,height=18,width=25,dpi=100)
 
 
 
-########## Band by band MEDIAN ############
+########## Band by band MEDIAN ###########l#
 ## Blue band
 bluemedianCW<-
   ggplot(blueCW,aes(BufferSize,median,color=Lake,shape=Landsat))+theme_classic()+
@@ -4219,9 +4205,7 @@ ggsave("bands.countCW.png",bands.countCW,height=18,width=25,dpi=100)
 
 
 
-####################################################################################
-############# Plot Multibuffer summary stats - sample point - WITH whole lake ######
-####################################################################################
+### Plot Multibuffer summary stats - SAMPLE PT - w/ whole lake ######
 ## Reshape data
 buffersW<-data.table(buffersW)
 tdl1sw<-
