@@ -1289,7 +1289,7 @@ llarge.c<-merge(limno_avg,llarge.c1,by.x=c("Lake"),by.y=c("Lake"),na.rm=TRUE,all
 #write.table(tdl2,"tdl2.csv")
 
 ### CHLOROPHYLL ALGORITHMS BELOW: ################
-################# Giardino et al. (2001) #####
+### Giardino et al. (2001) #####
 # Lake Iseo, Italy
 # ChlA = 11.18*B1 -8.96*B2 - 3.28 mg/m^3, Landsat 5
 # B1 + B2 = nir + green
@@ -1406,7 +1406,7 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Chl",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -1418,7 +1418,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -1465,7 +1465,7 @@ regs.Giardino<-arrangeGrob(reg.small.s,reg.large.s,reg.small.c,reg.large.c,ncol=
 ggsave("regs.Giardino.png",regs.Giardino,width=15,height=8,dpi=100)
 
 
-################# Mancino et al. (2009) ##############
+### Mancino et al. (2009) ##############
 # ChlA = -47.515 + 9.516(B3/B2) + 20.952(B1/B2) - 873(B2) + 34.889(B2/B1)
 # They started w/DNs and did radiometric calibration and atomspheric correction
 # Monticchio Lakes, Italy
@@ -1579,7 +1579,7 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Chl",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -1590,7 +1590,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -1634,7 +1634,7 @@ Mancino.nrmse.c.size<-
 
 
 
-################# Yip et al. (2015) ##############
+### Yip et al. (2015) ##############
 # ChlA = -115.95*B4 + 19.31*B3 + 4.56
 # Lake Diefenbaker in Saskatchewan, CA, LS 5
 # See lines below to run this alogorithm on the six subsets
@@ -1746,7 +1746,7 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Chl",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -1757,7 +1757,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -1802,7 +1802,7 @@ Yip.nrmse.c.size<-
 
 
 
-################# Brezonik et al. (2005) ##############
+### Brezonik et al. (2005) ##############
 # ChlA = B1+(B1/B3)
 # 13 lakes in east-central Minnesota
 # See lines below to run this alogorithm on the six subsets
@@ -1914,7 +1914,7 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Chl",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -1925,7 +1925,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -1970,7 +1970,7 @@ Brezonik.nrmse.c.size<-
 
 
 
-################# SABI (2020) ##############
+### SABI (2020) ##############
 # ChlA = (B4-B3)/(B1+B2)
 # SABI (Surface algal bloom index) developed by Alwadi (2010) and used by 
 # Empirical algorithm developed in order to detect water floating biomass that has a NIR response similar to that of land vegetation
@@ -2084,7 +2084,7 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Chl",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -2095,7 +2095,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -2141,7 +2141,7 @@ SABI.nrmse.c.size<-
 
 
 
-################# Plot 4 Chl algorithms together ####
+### Plot the Chl algorithms together ####
 chlAlgs<-arrangeGrob(Giardino.nrmse.s.size,Giardino.nrmse.c.size,Mancino.nrmse.s.size,
                      Mancino.nrmse.c.size,Yip.nrmse.s.size,Yip.nrmse.c.size,
                      Brezonik.nrmse.s.size,Brezonik.nrmse.c.size,SABI.nrmse.s.size,SABI.nrmse.c.size,ncol=2,nrow=5)
@@ -2150,7 +2150,7 @@ ggsave("chlAlgs.png",chlAlgs,width=25,height=20,dpi=200)
 
 
 ####### CDOM ALGORITHMS BELOW: ################
-################# Brezonik et al. (2005) ##############
+### Brezonik et al. (2005) ##############
 # ln(a440nm) = B2+(B1/B4)
 # 13 lakes in east-central Minnesota
 # See lines below to run this alogorithm on the six subsets
@@ -2263,7 +2263,7 @@ reg.large.c<-
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_440_nm",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -2275,7 +2275,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -2322,7 +2322,7 @@ Brezonik.cdom.nrmse.c.size<-
 
 
 
-################# Griffin et al. (2018) ##############
+### Griffin et al. (2018) ##############
 # a375=B1+B2+B3 -- note absorbance @ 375 nm
 # 6 Arctic rivers 
 # See lines below to run this alogorithm on the six subsets
@@ -2435,7 +2435,7 @@ reg.large.c<-
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_320_nm",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -2446,7 +2446,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -2494,7 +2494,7 @@ Griffin.nrmse.c.size<-
 
 
 
-################# Olmanson et al. (2016) ##############
+### Olmanson et al. (2016) ##############
 # ln(a440) = (B2/B3) + (B3/B4)
 # 61 surface water sites (lakes and rivers) in Minnesota and northern Wisconsin 
 # See lines below to run this alogorithm on the six subsets
@@ -2607,7 +2607,7 @@ reg.large.c<-
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
 
-#### Create nrmse table #####
+######## Create nrmse table #####
 mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_420_nm",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
@@ -2618,7 +2618,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -2667,9 +2667,7 @@ Olmanson.nrmse.c.size<-
 
 
 
-#### Create nrmse table #####
-mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_440_nm",".fitted")
-################# Kutser et al. (2012) ##############
+### Kutser et al. (2012) ##############
 # a320nm = B2/B3
 # Two sites, one central one southern Sweden
 # LS4, 5, and 7
@@ -2677,24 +2675,24 @@ mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_440_nm",".fitted")
 
 ################# ALL 15 LAKES, SAMPLE POINT
 #by_buffersize<-group_by(lsmall.s,BufferSize)
-#do(by_buffersize,glance(lm(Color_440_nm~green_median/red_median,data=.))))
-#do(by_buffersize,tidy(lm(Color_440_nm~green_median/red_median,data=.))))
+#do(by_buffersize,glance(lm(Color_320_nm~green_median/red_median,data=.))))
+#do(by_buffersize,tidy(lm(Color_320_nm~green_median/red_median,data=.))))
 ## Add predicted (fitted) values to the lm table
 pred.small.s<-
   lsmall.s%>%group_by(BufferSize)%>%
-  do(augment(lm(Color_440_nm~green_median/red_median,data=.)))
+  do(augment(lm(Color_320_nm~green_median/red_median,data=.)))
 ## Calculate nrmse (normalized by standard deviation, as calculated by HydroGOF package)
 nrmse.small.s<-
   pred.small.s%>%
-  select(BufferSize,Color_440_nm,.fitted)%>%
+  select(BufferSize,Color_320_nm,.fitted)%>%
   group_by(BufferSize)%>%
-  mutate(nrmse=sqrt(median((.fitted - Color_440_nm)^2))/sd(Color_440_nm))%>% # adds columns with nrmse values
+  mutate(nrmse=sqrt(median((.fitted - Color_320_nm)^2))/sd(Color_320_nm))%>% # adds columns with nrmse values
   mutate(Subset="All 15")%>%
   mutate(Centroid="S")
 # Regressions
 reg.small.s<-
   nrmse.small.s%>%
-  ggplot(aes(Color_440_nm,.fitted))+theme_classic()+
+  ggplot(aes(Color_320_nm,.fitted))+theme_classic()+
   geom_point(size=3,color="darkgreen")+geom_smooth(method="lm",color="black")+
   facet_wrap(~BufferSize,ncol=4)+
   scale_color_manual(values=mycolors)+geom_abline(slope=1,linetype="dashed")+
@@ -2706,22 +2704,22 @@ ggsave("reg.small.s.png",reg.small.s,width=12,height=5,dpi=100)
 
 ################# LARGE LAKES, SAMPLE POINT
 #by_buffersize<-group_by(llarge.s,BufferSize)
-#do(by_buffersize,glance(lm(Color_440_nm~green_median/red_median,data=.))))
-#do(by_buffersize,tidy(lm(Color_440_nm~green_median/red_median,data=.))))
+#do(by_buffersize,glance(lm(Color_320_nm~green_median/red_median,data=.))))
+#do(by_buffersize,tidy(lm(Color_320_nm~green_median/red_median,data=.))))
 pred.large.s<-
   llarge.s%>%group_by(BufferSize)%>%
-  do(augment(lm(Color_440_nm~green_median/red_median,data=.)))
+  do(augment(lm(Color_320_nm~green_median/red_median,data=.)))
 nrmse.large.s<-
   pred.large.s%>%
-  select(BufferSize,Color_440_nm,.fitted)%>%
+  select(BufferSize,Color_320_nm,.fitted)%>%
   group_by(BufferSize)%>%
-  mutate(nrmse=sqrt(median((.fitted - Color_440_nm)^2))/sd(Color_440_nm)) %>%
+  mutate(nrmse=sqrt(median((.fitted - Color_320_nm)^2))/sd(Color_320_nm)) %>%
   mutate(Subset="Large")%>%
   mutate(Centroid="S")
 # Regressions
 reg.large.s<-
   nrmse.large.s%>%
-  ggplot(aes(Color_440_nm,.fitted))+theme_classic()+
+  ggplot(aes(Color_320_nm,.fitted))+theme_classic()+
   geom_point(size=3,color="darkgreen")+geom_smooth(method="lm",color="black")+
   facet_wrap(~BufferSize,ncol=5)+
   scale_color_manual(values=mycolors)+geom_abline(slope=1,linetype="dashed")+
@@ -2732,22 +2730,22 @@ ggsave("reg.large.s.png",reg.large.s,width=12,height=8,dpi=100)
 
 ################# ALL 15 LAKES, CENTER OF LAKE
 #by_buffersize<-group_by(lsmall.c,BufferSize)
-#do(by_buffersize,glance(lm(Color_440_nm~green_median/red_median,data=.))))
-#do(by_buffersize,tidy(lm(Color_440_nm~green_median/red_median,data=.))))
+#do(by_buffersize,glance(lm(Color_320_nm~green_median/red_median,data=.))))
+#do(by_buffersize,tidy(lm(Color_320_nm~green_median/red_median,data=.))))
 pred.small.c<-
   lsmall.c%>%group_by(BufferSize)%>%
-  do(augment(lm(Color_440_nm~green_median/red_median,data=.)))
+  do(augment(lm(Color_320_nm~green_median/red_median,data=.)))
 nrmse.small.c<-
   pred.small.c%>%
-  select(BufferSize,Color_440_nm,.fitted)%>%
+  select(BufferSize,Color_320_nm,.fitted)%>%
   group_by(BufferSize)%>%
-  mutate(nrmse=sqrt(median((.fitted - Color_440_nm)^2))/sd(Color_440_nm)) %>%
+  mutate(nrmse=sqrt(median((.fitted - Color_320_nm)^2))/sd(Color_320_nm)) %>%
   mutate(Subset="All 15")%>%
   mutate(Centroid="C")
 # Regressions
 reg.small.c<-
   nrmse.small.c%>%
-  ggplot(aes(Color_440_nm,.fitted))+theme_classic()+
+  ggplot(aes(Color_320_nm,.fitted))+theme_classic()+
   geom_point(size=3,color="darkgreen")+geom_smooth(method="lm",color="black")+
   facet_wrap(~BufferSize,ncol=4)+
   scale_color_manual(values=mycolors)+geom_abline(slope=1,linetype="dashed")+
@@ -2759,22 +2757,22 @@ ggsave("reg.small.c.png",reg.small.c,width=12,height=5,dpi=100)
 
 ################# LARGE LAKES, CENTER OF LAKE
 #by_buffersize<-group_by(llarge.c,BufferSize)
-#do(by_buffersize,glance(lm(Color_440_nm~green_median/red_median,data=.))))
-#do(by_buffersize,tidy(lm(Color_440_nm~green_median/red_median,data=.))))
+#do(by_buffersize,glance(lm(Color_320_nm~green_median/red_median,data=.))))
+#do(by_buffersize,tidy(lm(Color_320_nm~green_median/red_median,data=.))))
 pred.large.c<-
   llarge.c%>%group_by(BufferSize)%>%
-  do(augment(lm(Color_440_nm~green_median/red_median,data=.)))
+  do(augment(lm(Color_320_nm~green_median/red_median,data=.)))
 nrmse.large.c<-
   pred.large.c%>%
-  select(BufferSize,Color_440_nm,.fitted)%>%
+  select(BufferSize,Color_320_nm,.fitted)%>%
   group_by(BufferSize)%>%
-  mutate(nrmse=sqrt(median((.fitted - Color_440_nm)^2))/sd(Color_440_nm)) %>%
+  mutate(nrmse=sqrt(median((.fitted - Color_320_nm)^2))/sd(Color_320_nm)) %>%
   mutate(Subset="Large")%>%
   mutate(Centroid="C")
 # Regressions
 reg.large.c<-
   nrmse.large.c%>%
-  ggplot(aes(Color_440_nm,.fitted))+theme_classic()+
+  ggplot(aes(Color_320_nm,.fitted))+theme_classic()+
   geom_point(size=3,color="darkgreen")+geom_smooth(method="lm",color="black")+
   facet_wrap(~BufferSize,ncol=6)+
   scale_color_manual(values=mycolors)+geom_abline(slope=1,linetype="dashed")+
@@ -2783,7 +2781,8 @@ reg.large.c<-
                aes(label=paste(..adj.rr.label..,..p.value.label..,sep="~~~"),size=3))
 ggsave("reg.large.c.png",reg.large.c,width=16,height=12,dpi=100)
 
-
+######## Create nrmse table ######
+mergeCols<-c("Centroid","Subset","BufferSize","nrmse","Color_320_nm",".fitted")
 
 Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
   merge(.,nrmse.small.c,by=mergeCols,all=TRUE)%>%
@@ -2793,7 +2792,7 @@ Fit.5d.S<-merge(nrmse.small.s,nrmse.large.s,by=mergeCols,all=TRUE)%>%
 FitSum<-summarise(group_by(Fit.5d.S,BufferSize,Subset,Centroid),
                   nrmse=median(nrmse))
 
-#### Plot ####
+######## Plot ####
 # Reorder
 FitSum$BufferSize <-
   factor(FitSum$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
@@ -2831,14 +2830,6 @@ Kutser.nrmse.c.size<-
   scale_y_continuous(lim=c(0,1))+
   scale_fill_manual(values=mycolors)+
   labs(title="Kutser, Center of lake",x="")
-
-
-
-
-
-
-
-
 
 
 
