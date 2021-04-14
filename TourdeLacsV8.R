@@ -1288,7 +1288,7 @@ llarge.c<-merge(limno_avg,llarge.c1,by.x=c("Lake"),by.y=c("Lake"),na.rm=TRUE,all
 ### Write table to R folder
 #write.table(tdl2,"tdl2.csv")
 
-### CHLOROPHYLL ALGORITHMS BELOW: ################
+########### CHLOROPHYLL ALGORITHMS BELOW: ################
 ### Giardino et al. (2001) #####
 # Lake Iseo, Italy
 # ChlA = 11.18*B1 -8.96*B2 - 3.28 mg/m^3, Landsat 5
@@ -2141,7 +2141,7 @@ SABI.nrmse.c.size<-
 
 
 
-### Plot the Chl algorithms together ####
+### Plot Chl algorithms together ####
 chlAlgs<-arrangeGrob(Giardino.nrmse.s.size,Giardino.nrmse.c.size,Mancino.nrmse.s.size,
                      Mancino.nrmse.c.size,Yip.nrmse.s.size,Yip.nrmse.c.size,
                      Brezonik.nrmse.s.size,Brezonik.nrmse.c.size,SABI.nrmse.s.size,SABI.nrmse.c.size,ncol=2,nrow=5)
@@ -2149,7 +2149,7 @@ ggsave("chlAlgs.jpeg",chlAlgs,width=25,height=20)
 ggsave("chlAlgs.png",chlAlgs,width=25,height=20,dpi=200)
 
 
-####### CDOM ALGORITHMS BELOW: ################
+########### CDOM ALGORITHMS BELOW: ################
 ### Brezonik et al. (2005) ##############
 # ln(a440nm) = B2+(B1/B4)
 # 13 lakes in east-central Minnesota
@@ -2834,7 +2834,7 @@ Kutser.nrmse.c.size<-
 
 
 
-######### Plot 4 CDOM algorithms together ####
+######### Plot CDOM algorithms together ####
 cdomAlgs<-arrangeGrob(Brezonik.cdom.nrmse.s.size,Brezonik.cdom.nrmse.c.size,
                       Griffin.nrmse.s.size,Griffin.nrmse.c.size,Olmanson.nrmse.s.size,
                       Olmanson.nrmse.c.size,Kutser.nrmse.s.size,Kutser.nrmse.c.size,ncol=2,nrow=4)
@@ -2852,7 +2852,7 @@ ggsave("cdomAlgs.png",cdomAlgs,width=20,height=20,dpi=200)
 Chl_histo<-
   limno_avg%>%
   ggplot(aes(Chl))+theme_classic()+
-  geom_histogram(binwidth=2,fill="grey", color="black", alpha=0.9)
+  geom_histogram(binwidth=.5,fill="grey", color="black", alpha=0.9)
 
 CDOM440_histo<-
   limno_avg%>%
@@ -2864,7 +2864,9 @@ CDOM320_histo<-
   ggplot(aes(Color_320_nm))+theme_classic()+
   geom_histogram(binwidth=.12,fill="grey", color="black", alpha=0.9,na.rm=TRUE)
 
-
+ggsave("Chl_histo.png",Chl_histo)
+CDOMhistos<-arrangeGrob(CDOM320_histo,CDOM440_histo,ncol=2)
+ggsave("CDOMhistos.png",CDOMhistos,width=10,height=5)
 
 ### Plot differences btw Center & Sample points - no subsets ####
 # Change column names in center of lake data table to make them distinctive for the join
