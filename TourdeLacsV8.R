@@ -1,4 +1,5 @@
 #### Packages #######
+library(rmarkdown)
 library(ggplot2)
 library(colorspace)
 library(car)
@@ -316,7 +317,7 @@ StdSW<-
   scale_shape_manual(values=c(2,16))+
   scale_color_manual(values=c("#4477AA","#228833","#EE6677","#CCBB44",
                               "#AA3377","#BBBBBB","#EE8866","#FFAABB","#AAAA00","#99DDFF"))+
-  labs(title="5 days, center of lake",x="Buffer Size (m)")
+  labs(title="Sample point",x="Buffer Size (m)")
 a <- annotation_logticks(sides='l')
 BuffCWStd<-StdSW+a
 ggsave("BuffCWStd.png",BuffCWStd,height=6,width=12,dpi=100)
@@ -333,8 +334,8 @@ BuffMeanSW<-
   scale_shape_manual(values=c(2,16))+
   scale_color_manual(values=c("#4477AA","#228833","#EE6677","#CCBB44",
                               "#AA3377","#BBBBBB","#EE8866","#FFAABB","#AAAA00","#99DDFF"))+
-  labs(title="5 days, center of lake",x="Buffer size (m)")
-ggsave("BuffMeanSW.png",BuffMeanC,height=6,width=12,dpi=100)
+  labs(title="Sample point",x="Buffer size (m)")
+ggsave("BuffMeanSW.png",BuffMeanSW,height=6,width=12,dpi=100)
 
 # Median
 BuffMedianSW<-
@@ -348,7 +349,7 @@ BuffMedianSW<-
   scale_shape_manual(values=c(2,16))+
   scale_color_manual(values=c("#4477AA","#228833","#EE6677","#CCBB44",
                               "#AA3377","#BBBBBB","#EE8866","#FFAABB","#AAAA00","#99DDFF"))+
-  labs(title="5 days, center of lake",x="Buffer size (m)")
+  labs(title="Sample point",x="Buffer size (m)")
 ggsave("BuffMedianSW.png",BuffMedianSW,height=6,width=12,dpi=100)
 
 # Count
@@ -363,7 +364,7 @@ BuffCountSW<-
   scale_shape_manual(values=c(2,16))+
   scale_color_manual(values=c("#4477AA","#228833","#EE6677","#CCBB44",
                               "#AA3377","#BBBBBB","#EE8866","#FFAABB","#AAAA00","#99DDFF"))+
-  labs(title="5 days, center of lake",x="Buffer size (m)")
+  labs(title="Sample point",x="Buffer size (m)")
 ggsave("BuffCountSW.png",BuffCountSW,height=6,width=12,dpi=100)
 
 ## Plot together
@@ -1219,6 +1220,10 @@ ggsave("Allstats.c.lg.png",Allstats.c.lg,height=10,width=17,dpi=100)
 ## Subset to buffer sizes that work for all 15 lakes (up to 120 m buffer)
 small.s<-filter(buffersW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
 small.s$BufferSize<-factor(small.s$BufferSize,levels=c("3","30","60","90","120","Whole"))
+# Removing Sebattus
+small.s<-filter(small.s,Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|Lake=="Morey"|Lake=="Sunapee"|Lake=="Thomas"|
+                  Lake=="Goose"|Lake=="Sebago"|Lake=="Fairlee"|Lake=="Long Lake"|Lake=="Long Pond"|Lake=="Panther"|Lake=="Androscoggin"|
+                  Lake=="Crescent")
 
 ## Subset large lakes (up to 420 m buffer, N=5 lakes)
 large.s1<-filter(buffersW,Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|Lake=="Morey"|Lake=="Sunapee")
