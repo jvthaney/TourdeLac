@@ -757,37 +757,33 @@ BuffFigs_5dCW <- arrangeGrob(BuffCountCW,StdCW,BuffMeanCW,BuffMedianCW,nrow=2, n
 ggsave("BuffFigs_5dCW.png",BuffFigs_5dCW,height=15,width=20,dpi=100)
 
 
-### Make Subsets based on lake size - ALL LAKES VS. LARGE LAKES #################
+### Make Subsets based on lake size - ALL LAKES VS. LARGE LAKES (long format) #################
 ####### Sample point
 ## Subset to buffer sizes that work for all 15 lakes (up to 60 m buffer)
-small.s<-filter(tdlsw,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="Whole")
+small.s<-filter(tdlsw,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
 small.s$BufferSize<-factor(small.s$BufferSize)
 
-## Subset large lakes (up to 290 m buffer, N=5 lakes)
-large.s1<-filter(tdlsw,Lake=="Sebago"|Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|Lake=="Morey"|Lake=="Sunapee")
+## Subset large lakes (up to 420 m buffer, N=5 lakes)
+large.s1<-filter(tdlsw,Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|Lake=="Morey"|Lake=="Sunapee")
 large.s1$Lake<-factor(large.s1$Lake)
-
 large.s<-filter(large.s1,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"|
                   BufferSize=="180"|BufferSize=="210"|BufferSize=="240"|BufferSize=="270"|BufferSize=="300"|BufferSize=="330"|
-                  BufferSize=="360"|BufferSize=="390"|BufferSize=="Whole")
+                  BufferSize=="360"|BufferSize=="390"|BufferSize=="420"|BufferSize=="Whole")
 large.s$BufferSize<-factor(large.s$BufferSize)
 
 ####### Center of lake 
 ## Subset to buffer sizes that work for all 15 lakes (up to 150 m buffer)
-small.c<-filter(tdlcw,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"
-                |BufferSize=="Whole")
+small.c<-filter(tdlcw,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
 small.c$BufferSize<-factor(small.c$BufferSize)
 
-
-## Subset large lakes (up to 810 m buffer)
-large.c1<-filter(tdlcw,Lake=="Sunapee"|Lake=="Auburn"|Lake=="Messalonskee"|Lake=="Sebago")
+## Subset large lakes (up to 570 m buffer, N=5 lakes)
+large.c1<-filter(tdlcw,Lake=="Sabattus"|Lake=="Long Lake"|Lake=="Auburn"|Lake=="Androscoggin"|Lake=="Sebago")
 large.c1$Lake<-factor(large.c1$Lake)
 
 large.c<-filter(large.c1,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"|
                   BufferSize=="180"|BufferSize=="210"|BufferSize=="240"|BufferSize=="270"|BufferSize=="300"|BufferSize=="330"|
                   BufferSize=="360"|BufferSize=="390"|BufferSize=="420"|BufferSize=="450"|BufferSize=="480"|BufferSize=="510"|
-                  BufferSize=="540"|BufferSize=="570"|BufferSize=="600"|BufferSize=="630"|BufferSize=="660"|BufferSize=="690"|
-                  BufferSize=="720"|BufferSize=="750"|BufferSize=="780"|BufferSize=="810"|BufferSize=="Whole")
+                  BufferSize=="540"|BufferSize=="570"|BufferSize=="Whole")
 large.c$BufferSize<-factor(large.c$BufferSize)
 
 
@@ -1218,43 +1214,36 @@ ggsave("Allstats.c.lg.png",Allstats.c.lg,height=10,width=17,dpi=100)
 
 
 
-### Remake lake subsets to use w/ chl, secchi, & other algorithms ######
+### Remake lake size subsets for use w/ limno data (wide format) ######
 ####### Sample point
 ## Subset to buffer sizes that work for all 15 lakes (up to 120 m buffer)
-small.s<-filter(buffersW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|
-                  BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
+small.s<-filter(buffersW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
 small.s$BufferSize<-factor(small.s$BufferSize,levels=c("3","30","60","90","120","Whole"))
 
-## Subset large lakes (up to 390 m buffer, N=5 lakes)
-large.s1<-filter(buffersW,Lake=="Sebago"|Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|
-                   Lake=="Morey"|Lake=="Sunapee")
+## Subset large lakes (up to 420 m buffer, N=5 lakes)
+large.s1<-filter(buffersW,Lake=="Auburn"|Lake=="Mascoma"|Lake=="Messalonskee"|Lake=="Morey"|Lake=="Sunapee")
 large.s1$Lake<-factor(large.s1$Lake)
-
 large.s<-filter(large.s1,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"|
                   BufferSize=="180"|BufferSize=="210"|BufferSize=="240"|BufferSize=="270"|BufferSize=="300"|BufferSize=="330"|
-                  BufferSize=="360"|BufferSize=="390"|BufferSize=="Whole")
-large.s$BufferSize<-factor(large.s$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
-                                                              "330","360","390","Whole"))
+                  BufferSize=="360"|BufferSize=="390"|BufferSize=="420"|BufferSize=="Whole")
+large.s$BufferSize<-factor(large.s$BufferSize,levels=c("3","30","60","90","120","150","180","210",
+                                                       "240","270","300","330","360","390","420","Whole"))
 
 ####### Center of lake 
-## Subset to buffer sizes that work for all 15 lakes (up to 150 m buffer)
-small.c<-filter(buffersCW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"
-                |BufferSize=="Whole")
-small.c$BufferSize<-factor(small.c$BufferSize,levels=c("3","30","60","90","120","150","Whole"))
+## Subset to buffer sizes that work for all 15 lakes (up to 120 m buffer)
+small.c<-filter(buffersCW,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="Whole")
+small.c$BufferSize<-factor(small.c$BufferSize,levels=c("3","30","60","90","120","Whole"))
 
-
-## Subset large lakes (up to 810 m buffer)
-large.c1<-subset(buffersCW,Lake=="Sunapee"|Lake=="Auburn"|Lake=="Messalonskee"|Lake=="Sebago")
+## Subset large lakes (up to 570 m buffer, 5 lakes)
+large.c1<-subset(buffersCW,Lake=="Sabattus"|Lake=="Long Lake"|Lake=="Auburn"|Lake=="Androscoggin"|Lake=="Sebago")
 large.c1$Lake<-factor(large.c1$Lake)
 
 large.c<-subset(large.c1,BufferSize=="3"|BufferSize=="30"|BufferSize=="60"|BufferSize=="90"|BufferSize=="120"|BufferSize=="150"|
                   BufferSize=="180"|BufferSize=="210"|BufferSize=="240"|BufferSize=="270"|BufferSize=="300"|BufferSize=="330"|
                   BufferSize=="360"|BufferSize=="390"|BufferSize=="420"|BufferSize=="450"|BufferSize=="480"|BufferSize=="510"|
-                  BufferSize=="540"|BufferSize=="570"|BufferSize=="600"|BufferSize=="630"|BufferSize=="660"|BufferSize=="690"|
-                  BufferSize=="720"|BufferSize=="750"|BufferSize=="780"|BufferSize=="810"|BufferSize=="Whole")
+                  BufferSize=="540"|BufferSize=="570"|BufferSize=="Whole")
 large.c$BufferSize<-factor(large.c$BufferSize,levels=c("3","30","60","90","120","150","180","210","240","270","300",
-                                                       "330","360","390","420","450","480","510","540","570","600","630","660","690",
-                                                       "720","750","780","810","Whole"))
+                                                       "330","360","390","420","450","480","510","540","570","Whole"))
 
 ## Remove na rows
 buffersW<-buffersW%>%filter(!is.na(nir_mean))
